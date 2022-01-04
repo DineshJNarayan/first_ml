@@ -19,6 +19,8 @@ print('pandas: {}'.format(pandas.__version__))
 import sklearn
 print('sklearn: {}'.format(sklearn.__version__))
 
+import mysql.connector
+
 # Load libraries
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
