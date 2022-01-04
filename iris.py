@@ -19,6 +19,8 @@ print('pandas: {}'.format(pandas.__version__))
 import sklearn
 print('sklearn: {}'.format(sklearn.__version__))
 
+import mysql.connector
+
 # Load libraries
 from pandas import read_csv
 from pandas.plotting import scatter_matrix
@@ -37,9 +39,22 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
 # Load dataset
-url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
-dataset = read_csv(url, names=names)
+mydb = mysql.connector.connect  (   host="127.0.0.1", user="root", password="Vmcp2020Gain", database="MachineLearning"  )
+mycursor = mydb.cursor()
+query = "SELECT sepal_length, sepal_width, petal_length, petal_width, class FROM iris_ml"
+mycursor.execute(query)
+records = mycursor.fetchall()
+dataset = pandas.DataFrame(records)
+dataset.columns = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset['sepal-length'] = pandas.to_numeric(dataset['sepal-length'])
+dataset['sepal-width'] = pandas.to_numeric(dataset['sepal-width'])
+dataset['petal-length'] = pandas.to_numeric(dataset['petal-length'])
+dataset['petal-width'] = pandas.to_numeric(dataset['petal-width'])
+
+# Load dataset
+## url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+## names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+## dataset = read_csv(url, names=names)
 
 # shape
 print(dataset.shape)
