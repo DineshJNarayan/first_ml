@@ -1,17 +1,30 @@
 # make predictions
+import pandas
 from pandas import read_csv
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
-
 import mysql.connector
 
 # Load dataset
-url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
-dataset = read_csv(url, names=names)
+mydb = mysql.connector.connect  (   host="127.0.0.1", user="root", password="Vmcp2020Gain", database="MachineLearning"  )
+mycursor = mydb.cursor()
+query = "SELECT sepal_length, sepal_width, petal_length, petal_width, class FROM iris_ml"
+mycursor.execute(query)
+records = mycursor.fetchall()
+dataset = pandas.DataFrame(records)
+dataset.columns = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+dataset['sepal-length'] = pandas.to_numeric(dataset['sepal-length'])
+dataset['sepal-width'] = pandas.to_numeric(dataset['sepal-width'])
+dataset['petal-length'] = pandas.to_numeric(dataset['petal-length'])
+dataset['petal-width'] = pandas.to_numeric(dataset['petal-width'])
+
+# Load dataset
+## url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
+## names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+## dataset = read_csv(url, names=names)
 
 # Split-out validation dataset
 array = dataset.values
