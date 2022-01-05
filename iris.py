@@ -37,11 +37,6 @@ dataset['sepal-width'] = pandas.to_numeric(dataset['sepal-width'])
 dataset['petal-length'] = pandas.to_numeric(dataset['petal-length'])
 dataset['petal-width'] = pandas.to_numeric(dataset['petal-width'])
 
-# Load dataset
-## url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
-## names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
-## dataset = read_csv(url, names=names)
-
 # shape
 print(dataset.shape)
 # head
