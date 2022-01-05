@@ -57,7 +57,9 @@ pyplot.show()
 
 # Split-out validation dataset
 array = dataset.values
+# Extract all data from columns sepal_length, sepal_width, petal_length, petal_width 
 X = array[:,0:4]
+# Extract all data from column class 
 y = array[:,4]
 X_train, X_validation, Y_train, Y_validation = train_test_split(X, y, test_size=0.20, random_state=1)
 
