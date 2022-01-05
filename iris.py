@@ -8,7 +8,6 @@ import sklearn
 import mysql.connector
 
 # Load libraries
-## from pandas import read_csv
 from pandas.plotting import scatter_matrix
 from matplotlib import pyplot
 from sklearn.model_selection import train_test_split
