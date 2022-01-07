@@ -1,10 +1,10 @@
 # python version
-import sys
-import scipy
-import numpy
-import matplotlib
+#import sys
+#import scipy
+#import numpy
+#import matplotlib
 import pandas
-import sklearn
+#import sklearn
 import mysql.connector
 
 # Load libraries
