@@ -46,6 +46,6 @@ prediction = make_prediction(input_vector, weights_1, bias)
 error = (prediction - target) ** 2
 print(f"Prediction: {prediction}; Error: {error}")
 
-learning_rate = 0.1
-neural_network = cn.NeuralNetwork(learning_rate)
-neural_network.predict(input_vector)
+#learning_rate = 0.1
+#neural_network = cn.NeuralNetwork(learning_rate)
+#neural_network.predict(input_vector)
