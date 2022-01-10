@@ -1,10 +1,6 @@
-# python version
-#import sys
-#import scipy
-#import numpy
-#import matplotlib
+## please use 'conda activate test_env' before running script
+
 import pandas
-#import sklearn
 import mysql.connector
 
 # Load libraries
