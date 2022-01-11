@@ -1,3 +1,5 @@
+## please use 'conda activate test_env' before running script 'python3 iris.py' -> 11-01-2022
+
 # make predictions
 import pandas
 from pandas import read_csv
