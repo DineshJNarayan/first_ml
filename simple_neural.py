@@ -1,3 +1,5 @@
+## please use 'conda activate test_env' before running script 'python3 simple_neural.py' -> 11-01-2022
+
 import numpy as np
 import class_neuralnetwork as cn
 from matplotlib import pyplot

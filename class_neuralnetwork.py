@@ -1,3 +1,5 @@
+## please use 'conda activate test_env' before running script 'python3 class_neuralnetwork.py' -> 11-01-2022
+
 import numpy as np
 
 class NeuralNetwork:
