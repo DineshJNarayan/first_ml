@@ -1,3 +1,5 @@
+## please use 'conda activate test_env' before running script with 'python3 insert_mysql.py' -> 11-01-2022
+
 import mysql.connector
 import pandas as pd
 # Load libraries
