@@ -1,4 +1,4 @@
-## please use 'conda activate test_env' before running script with python3 iris.py
+## please use 'conda activate test_env' before running script with 'python3 iris.py'
 
 import pandas
 import mysql.connector
