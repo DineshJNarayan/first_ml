@@ -45,8 +45,8 @@ print(dataset.head(20))
 print(dataset.describe())
 
 # box and whisker plots
-#dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
-#pyplot.show()
+dataset.plot(kind='density', subplots=True, layout=(3,3), sharex=False)
+pyplot.show()
 
 # histograms
 dataset.hist()
@@ -54,4 +54,8 @@ pyplot.show()
 
 # scatter plot matrix
 scatter_matrix(dataset)
+pyplot.show()
+
+# box plot
+dataset.plot(kind='box', subplots=True, layout=(3,3), sharex=False,sharey=False)
 pyplot.show()
