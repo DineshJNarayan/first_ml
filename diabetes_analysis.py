@@ -72,3 +72,49 @@ ax.set_yticks(ticks)
 ax.set_xticklabels(dataset.columns)
 ax.set_yticklabels(dataset.columns)
 pyplot.show()
+
+# Split-out validation dataset
+array = dataset.values
+# Extract all data from columns sepal_length, sepal_width, petal_length, petal_width 
+X = array[:,0:8]
+# Extract all data from column class 
+Y = array[:,8]
+# Split the data set into training data & validation data - 80% training, 20% testing
+X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, train_size=0.80, test_size=0.20, random_state=1)
+# X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, train_size=0.80, test_size=0.20)
+
+# Spot Check Algorithms
+models = []
+models.append(('LR', LogisticRegression(solver='liblinear', multi_class='ovr')))
+models.append(('LDA', LinearDiscriminantAnalysis()))
+models.append(('KNN', KNeighborsClassifier()))
+models.append(('CART', DecisionTreeClassifier()))
+models.append(('NB', GaussianNB()))
+models.append(('SVM', SVC(gamma='auto')))
+# evaluate each model in turn
+results = []
+names = []
+for name, model in models:
+	kfold = StratifiedKFold(n_splits=10, random_state=1, shuffle=True)
+	cv_results = cross_val_score(model, X_train, Y_train, cv=kfold, scoring='accuracy')
+	results.append(cv_results)
+	names.append(name)
+	print('%s: %f (%f)' % (name, cv_results.mean(), cv_results.std()))
+
+# Compare Algorithms
+pyplot.boxplot(results, labels=names)
+pyplot.title('Algorithm Comparison')
+pyplot.show()
+
+# Make predictions on validation dataset
+model = LogisticRegression(solver='liblinear', multi_class='ovr')
+model.fit(X_train, Y_train)
+predictions = model.predict(X_validation)
+
+# Evaluate predictions
+print("accuracy score")
+print(accuracy_score(Y_validation, predictions))
+print("confusion matrix")
+print(confusion_matrix(Y_validation, predictions))
+print("classification report")
+print(classification_report(Y_validation, predictions))
