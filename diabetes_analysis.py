@@ -81,7 +81,6 @@ X = array[:,0:8]
 Y = array[:,8]
 # Split the data set into training data & validation data - 80% training, 20% testing
 X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, train_size=0.80, test_size=0.20, random_state=1)
-# X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, train_size=0.80, test_size=0.20)
 
 # Spot Check Algorithms
 models = []
